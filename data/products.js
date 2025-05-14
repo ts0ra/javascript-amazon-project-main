@@ -656,5 +656,36 @@ const products = [
       "apparel",
       "mens"
     ]
-  }
+  },
+  {
+    id: "bc2827e9-5323-403f-b7cf-57fees44a955",
+    image: "images/products/backpack.jpg",
+    name: "Black Backpack Adults with Waterproof",
+    rating: {
+      stars: 3.5,
+      count: 111
+    },
+    priceCents: 6700,
+    keywords: [
+      "black",
+      "backpack",
+      "fashion",
+      "mens"
+    ]
+  },
+  {
+    id: "b12347e9-5323-403f-b7cf-57fdd2de0955",
+    image: "images/products/umbrella.jpg",
+    name: "Dark Green Umbrella Steal Tong",
+    rating: {
+      stars: 5.0,
+      count: 99992
+    },
+    priceCents: 1879,
+    keywords: [
+      "dark_green",
+      "umbrella",
+      "tools"
+    ]
+  },
 ];
