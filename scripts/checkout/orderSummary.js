@@ -4,6 +4,7 @@ import { products, getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 
 
@@ -117,20 +118,14 @@ export function renderOrderSummary() {
       link.addEventListener('click', () => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
-        updateCartQuantity();
-
+        
+        renderCheckoutHeader();
         renderOrderSummary();
         renderPaymentSummary();
       });
   });
 
-  function updateCartQuantity() {
-    let cartQuantity = calculateCartQuantity();
-
-    document.querySelector('.js-checkout-quantity').innerHTML = `${cartQuantity} items`;
-  }
-
-  updateCartQuantity();
+  renderCheckoutHeader();
 
   document
     .querySelectorAll('.js-update-quantity')
@@ -148,10 +143,6 @@ export function renderOrderSummary() {
     }
   );
 
-  function updateQuantityLabel(productId, value) {
-    document.querySelector(`.js-quantity-label-${productId}`).innerHTML = value;
-  }
-
   document
     .querySelectorAll('.js-save-quantity')
     .forEach(save => {
@@ -167,8 +158,7 @@ export function renderOrderSummary() {
 
         if (valueInput >= 0 && valueInput < 1000) {
           updateQuantity(productId, Number(input.value));
-          updateCartQuantity();
-          //updateQuantityLabel(productId, Number(input.value));
+          renderCheckoutHeader();
           renderPaymentSummary();
           renderOrderSummary();
           console.log('valid');
@@ -190,8 +180,7 @@ export function renderOrderSummary() {
         const valueInput = Number(input.value)
         if (valueInput >= 0 && valueInput < 1000) {
           updateQuantity(productId, Number(input.value));
-          updateCartQuantity();
-          //updateQuantityLabel(productId, Number(input.value));
+          renderCheckoutHeader();
           renderPaymentSummary();
           renderOrderSummary();
           console.log('valid');
