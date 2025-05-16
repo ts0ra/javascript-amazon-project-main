@@ -117,13 +117,9 @@ export function renderOrderSummary() {
       link.addEventListener('click', () => {
         const productId = link.dataset.productId;
         removeFromCart(productId);
-        
-        const container = document.querySelector(`.js-cart-item-container-${productId}`);
-
-        container.remove();
-
         updateCartQuantity();
 
+        renderOrderSummary();
         renderPaymentSummary();
       });
   });
@@ -172,7 +168,9 @@ export function renderOrderSummary() {
         if (valueInput >= 0 && valueInput < 1000) {
           updateQuantity(productId, Number(input.value));
           updateCartQuantity();
-          updateQuantityLabel(productId, Number(input.value));
+          //updateQuantityLabel(productId, Number(input.value));
+          renderPaymentSummary();
+          renderOrderSummary();
           console.log('valid');
         } else {
           console.log('invalid');
@@ -193,7 +191,9 @@ export function renderOrderSummary() {
         if (valueInput >= 0 && valueInput < 1000) {
           updateQuantity(productId, Number(input.value));
           updateCartQuantity();
-          updateQuantityLabel(productId, Number(input.value));
+          //updateQuantityLabel(productId, Number(input.value));
+          renderPaymentSummary();
+          renderOrderSummary();
           console.log('valid');
         } else {
           console.log('invalid');
